@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usersテーブル
+| Column     | Type   | Options     | 
+| ---------- | ------ | ----------- | 
+| nickname   | string | null: false | 
+| last_name  | string | null: false | 
+| first_name | string | null: false | 
+| profile    | text   | null: false | 
+### Association
+has_many :Posts
+has_many :comments
 
-Things you may want to cover:
+## Postsテーブル
 
-* Ruby version
+| Column             | Type       | Options           | 
+| ------------------ | ---------- | ----------------- | 
+| title              | string     | null: false       | 
+| genre1_id          | integer    | null: false       | 
+| genre2_id          | integer    | null: false       | 
+| shop_name          | string     |                   | 
+| explanation        | string     |                   | 
+| self_assessment_id | integer    | null: false       | 
+| user               | references | foreign_key: true | 
 
-* System dependencies
+### Association
+belongs_to :user
+has_many :comments
+## Commentsテーブル
 
-* Configuration
+| Column | Type       | Options           | 
+| ------ | ---------- | ----------------- | 
+| text   | text       | null: false       | 
+| user   | references | foreign_key: true | 
+| post   | references | foreign_key: true | 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+belongs_to :user
+belongs_to :post
