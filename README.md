@@ -6,7 +6,7 @@
 | nickname   | string | null: false | 
 | last_name  | string | null: false | 
 | first_name | string | null: false | 
-| profile    | text   | null: false | 
+| profile    | text   |             | 
 ### Association
 has_many :Posts
 has_many :comments
