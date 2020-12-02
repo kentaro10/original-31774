@@ -1,0 +1,46 @@
+<div class=post-form>
+ <h1>新規投稿記事</h1>
+ <%= form_with model: @post,local: true do |f| %>
+
+  <%#= render 'shared/error_messages', model: @post %>
+
+  <div>タイトル
+  <%= f.text_area :title, class:"posts-text", id:"post-title", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+  </div>
+
+  <div class="img-upload">
+      <div class="weight-bold-text">
+        出品画像
+        <span class="indispensable">必須</span>
+      </div>
+
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"post-image" %>
+        </div>
+        <div>ジャンル1
+        <%= f.collection_select(:genre_1_id, Genre1.all, :id, :name, {} ,{class:"select-box", id:"postgenre1"}) %>
+        </div>
+        <div>ジャンル2
+        <%= f.collection_select(:genre_2_id, Genre2.all, :id, :name, {} ,{class:"select-box", id:"postgenre2"}) %>
+        </div>
+
+        <div>店名
+        <%= f.text_field :shop_name %>
+        </div>
+
+        <div>説明
+         <%= f.text_area :explanation, class:"posts-text", id:"post-info", placeholder:"料理、食事の様子（必須 1,000文字まで)。" ,maxlength:"1000" %>
+         </div>
+
+         
+
+       <div>
+      <%= f.submit "投稿する" ,class:"post-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+       </div>
+
+    <% end %>
+</div>
