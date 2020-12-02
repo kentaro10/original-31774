@@ -3,9 +3,10 @@
 <%= @post.title %>
 </h2>
   <%# 投稿ユーザーのみ記事の編集、削除ボタンが現れる %>
-  <%# if current_user.id == @post.user.id %>
-
-  <%# end %>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+  <%= link_to "編集", edit_post_path(@post) %>
+  <% else %>
+  <% end %>
   <%# /投稿ユーザーのみ記事の編集、削除ボタンが現れる %>
 <%= @post.genre_1.name %>
 <%= @post.genre_2.name %>

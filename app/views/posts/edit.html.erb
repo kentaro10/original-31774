@@ -1,5 +1,5 @@
-<div class=post-form>
- <h1>新規投稿記事</h1>
+<div class=edit-form>
+ <h1>記事編集</h1>
  <%= form_with model: @post,local: true do |f| %>
 
   <%#= render 'shared/error_messages', model: @post %>
@@ -10,7 +10,7 @@
 
   <div class="img-upload">
       <div class="weight-bold-text">
-        画像
+        出品画像
         <span class="indispensable">必須</span>
       </div>
 
