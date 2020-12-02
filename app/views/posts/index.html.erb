@@ -24,7 +24,7 @@
 <%= link_to post_path(post.id) do %>
 <li>
 <%= post.title %>
-<%= image_tag post.image %>
+<%= image_tag post.image, class: "post-img" %>
 </li>
 <% end %>
 </ul>
