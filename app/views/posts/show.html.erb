@@ -5,6 +5,7 @@
   <%# 投稿ユーザーのみ記事の編集、削除ボタンが現れる %>
   <% if user_signed_in? && current_user.id == @post.user_id %>
   <%= link_to "編集", edit_post_path(@post) %>
+  <%= link_to "記事削除", post_path(@post.id), method: :delete %>
   <% else %>
   <% end %>
   <%# /投稿ユーザーのみ記事の編集、削除ボタンが現れる %>
