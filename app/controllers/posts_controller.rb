@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :move_to_index ]
+  before_action :set_post, only: [:show, :edit, :update, :move_to_index, :destroy ]
   before_action :move_to_index, only: :edit
   def index
     @post = Post.includes(:user).order("created_at DESC")
@@ -31,6 +31,16 @@ class PostsController < ApplicationController
     end
 
   end
+
+  def destroy
+    if current_user.id == @post.user_id
+      @post.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
+  end
+
 
 
   private
