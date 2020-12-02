@@ -1,0 +1,23 @@
+<%# 記事の概要 %>
+<h2 class="post-title">
+<%= @post.title %>
+</h2>
+  <%# 投稿ユーザーのみ記事の編集、削除ボタンが現れる %>
+  <%# if current_user.id == @post.user.id %>
+
+  <%# end %>
+  <%# /投稿ユーザーのみ記事の編集、削除ボタンが現れる %>
+<%= @post.genre_1.name %>
+<%= @post.genre_2.name %>
+<%= image_tag @post.image %>
+<%= @post.explanation %>
+<%# /記事の概要 %>
+<a herf="#">
+前の記事
+</a>
+<a herf="#">
+次の記事
+</a>
+<%= link_to "topページ", root_path%>
+<%# コメント %>
+<%# /コメント %>
