@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :move_to_index ]
+  before_action :move_to_index, only: :edit
   def index
     @post = Post.includes(:user).order("created_at DESC")
-
   end
   
   def new
@@ -18,7 +19,17 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+  end
+  def edit
+  end
+  def update
+    if @post.update(post_params)
+      
+    redirect_to post_path(params[:id])
+    else
+      render :edit
+    end
+
   end
 
 
@@ -26,6 +37,16 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:image, :title, :genre_1_id, :genre_2_id, :shop_name, :explanation, :self_assessment_id).merge(user_id: current_user.id)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def move_to_index
+    unless user_signed_in?  && current_user.id == @post.user_id 
+      redirect_to action: :index
+     end
   end
 
 end
