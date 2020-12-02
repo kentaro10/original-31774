@@ -18,6 +18,14 @@
  <%# ジャンル一覧 %>
 <%# 記事一覧 %>
 <div class='post_contents'>
+<h1>新着記事</h1>
+<% @post.each do |post| %>
+<%= link_to post_path(post.id) do %>
+<%= post.title %>
+<%= image_tag post.image %>
+<% end %>
+
+<% end %>
 </div >
 <%# /記事一覧 %>
 

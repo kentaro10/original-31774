@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_065409) do
     t.integer "genre_2_id", null: false
     t.string "shop_name"
     t.text "explanation"
-    t.integer "self_assessment_id", null: false
+    t.integer "self_assessment_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
