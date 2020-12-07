@@ -1,6 +1,7 @@
 <%# 記事の概要 %>
 <h2 class="post-title">
 <%= @post.title %>
+<%= link_to "#{@post.user.nickname}", user_path(@post.user.id)%>
 </h2>
   <%# 投稿ユーザーのみ記事の編集、削除ボタンが現れる %>
   <% if user_signed_in? && current_user.id == @post.user_id %>
@@ -9,6 +10,10 @@
   <% else %>
   <% end %>
   <%# /投稿ユーザーのみ記事の編集、削除ボタンが現れる %>
+  <%# フォローする・削除 %>
+   
+ 
+  <%# /フォローする・削除 %>
 <%= @post.genre_1.name %>
 <%= @post.genre_2.name %>
 <%= image_tag @post.image %>

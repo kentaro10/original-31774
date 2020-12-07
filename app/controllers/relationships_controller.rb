@@ -1,4 +1,11 @@
 class RelationshipsController < ApplicationController
+
+  def following
+    @user = User.find(params[:id])
+  end
+  def followerd
+    @user = User.find(params[:id])
+  end
   def follow
     current_user.follow(params[:id])
     redirect_to root_path

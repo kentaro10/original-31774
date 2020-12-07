@@ -27,35 +27,17 @@
   <% end %>
 <% end %>
 
-<h2>フォロー一覧</h2>
-  <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "名前 #{user.nickname}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "見にいく", user_path(user) %>
-    </p>
-  <% end %>
+
+ <%= link_to 'フォロー一覧',following_path(@user.id) %>
 <h2>フォロワー一覧</h2>
-  <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "名前 #{user.nickname}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "見にいく", user_path(user) %>
-    </p>
-  <% end %>
+  <%= link_to 'フォロワー一覧',followerd_path(@user.id) %>
 <%# ログインユーザー自身のページだったら表示する %>
 <%# 新規投稿ボタン %>
 
 <%# /新規投稿ボタン %>
-<%# フォロワーの新着記事 %>
+<%# フォローしてる人の新着記事 %>
+
+  
 <%# /フォロワーの新着記事 %>
 <%# /ログインユーザー自身のページだったら表示する %>
 <%# 新着順自身の記事 %>

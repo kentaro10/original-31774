@@ -1,0 +1,8 @@
+<h1>a</h1>
+<h2>フォロー</h2>
+  <% @user.following_user.where.not(id: @user.id).each do |user| %>
+    <p>
+      <%= "名前 #{user.nickname}" %>
+      <%= link_to "見にいく", user_path(user) %>
+    </p>
+  <% end %>
