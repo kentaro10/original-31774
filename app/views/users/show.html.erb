@@ -1,0 +1,43 @@
+<%# ユーザープロフィール %>
+<table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">名前</th>
+            <td class="table__col2"><%= @user.nickname %></td>
+          </tr>
+          <%# アイコン %>
+          <%# /アイコン %>
+          <%# フォロー関係 %>
+          <%# /フォロー関係 %>
+          <tr>
+            <th class="table__col1">プロフィール</th>
+            <td class="table__col2"></td>
+          </tr>
+        </tbody>
+      </table>
+<%# /ユーザープロフィール %>
+<%# ログインユーザー自身のページだったら表示する %>
+<%# 新規投稿ボタン %>
+
+<%# /新規投稿ボタン %>
+<%# フォロワーの新着記事 %>
+<%# /フォロワーの新着記事 %>
+<%# /ログインユーザー自身のページだったら表示する %>
+<%# 新着順自身の記事 %>
+<h2 class="page-heading">
+        <%= "#{@user.nickname}さんの投稿記事"%>
+      </h2>
+<ul>
+<% @posts.each do |post| %>
+<%= link_to post_path(post.id) do %>
+<li>
+<%= post.title %>
+<%= image_tag post.image, class: "post-img" %>
+</li>
+<% end %>
+</ul>
+<% end %>
+
+<%# /新着順自身の記事 %>
+<%# カレンダー %>
+<%# /カレンダー %>

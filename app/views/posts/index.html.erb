@@ -4,7 +4,7 @@
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <% if user_signed_in? %>
       <li> <%= link_to '新規投稿', new_post_path %> </li>
-      <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+      <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
       <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
@@ -15,7 +15,7 @@
  <%# /ヘッダー %>
 
  <%# ジャンル一覧 %>
- <%# ジャンル一覧 %>
+ <%# /ジャンル一覧 %>
 <%# 記事一覧 %>
 <div class='post_contents'>
 <h1>新着記事一覧</h1>
@@ -28,12 +28,15 @@
 </li>
 <% end %>
 </ul>
-
-
 <% end %>
 <%= paginate @posts %>
 </div >
 <%# /記事一覧 %>
-
+<%# 飲食店新着５〜６件 %>
+<%# /飲食店新着５〜６件 %>
+<%# 手料理新着５〜６件 %>
+<%# /手料理新着５〜６件 %>
+<%# コンビニ・スーパー 5~6件 %>
+<%# /コンビニ・スーパー 5~6件 %>
 <%# footer %>
 <%# /footer %>
