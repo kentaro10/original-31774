@@ -1,0 +1,60 @@
+<%# ユーザープロフィール %>
+<table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">名前</th>
+            <td class="table__col2"><%= @user.nickname %></td>
+          </tr>
+          <%# アイコン %>
+          <%# /アイコン %>
+          <%# フォロー関係 %>
+          <%# /フォロー関係 %>
+          <tr>
+            <th class="table__col1">プロフィール</th>
+            <td class="table__col2"></td>
+          </tr>
+        </tbody>
+      </table>
+<%# /ユーザープロフィール %>
+<p><%# "id: #{@user.id}" %></p>
+<p><%= "フォロー数: #{@user.follower.count}" %></p>
+<p><%= "フォロワー数: #{@user.followed.count}" %></p>
+<% unless @user == current_user %>
+  <% if current_user.following?(@user) %>
+    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+  <% else %>
+    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+  <% end %>
+<% end %>
+
+
+ <%= link_to 'フォロー一覧',following_path(@user.id) %>
+<h2>フォロワー一覧</h2>
+  <%= link_to 'フォロワー一覧',followerd_path(@user.id) %>
+<%# ログインユーザー自身のページだったら表示する %>
+<%# 新規投稿ボタン %>
+
+<%# /新規投稿ボタン %>
+<%# フォローしてる人の新着記事 %>
+
+  
+<%# /フォロワーの新着記事 %>
+<%# /ログインユーザー自身のページだったら表示する %>
+<%# 新着順自身の記事 %>
+<h2 class="page-heading">
+        <%= "#{@user.nickname}さんの投稿記事"%>
+      </h2>
+<ul>
+<% @posts.each do |post| %>
+<%= link_to post_path(post.id) do %>
+<li>
+<%= post.title %>
+<%= image_tag post.image, class: "post-img" %>
+</li>
+<% end %>
+</ul>
+<% end %>
+
+<%# /新着順自身の記事 %>
+<%# カレンダー %>
+<%# /カレンダー %>
