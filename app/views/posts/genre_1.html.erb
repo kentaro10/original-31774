@@ -1,0 +1,12 @@
+<%= "#{@post.genre_1.name}" %>
+<ul>
+<% @posts.each do |post| %>
+
+<%= link_to post_path(post.id) do %>
+<li>
+<%= post.title %>
+<%= image_tag post.image, class: "post-img" %>
+</li>
+<% end %>
+<% end %>
+</ul>

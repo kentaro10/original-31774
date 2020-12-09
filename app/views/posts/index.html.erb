@@ -1,4 +1,4 @@
-<h1>Posts#index トップページ</h1>
+<h1>ひるメシ top page</h1>
  <%#  ヘッダー %>
  <ul class='lists-right'>
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
@@ -13,7 +13,8 @@
       <% end %>
       </ul>
  <%# /ヘッダー %>
-
+<%# アプリケーション概要 %>
+<%# /アプリケーション概要 %>
  <%# ジャンル一覧 %>
  <%# /ジャンル一覧 %>
 <%# 記事一覧 %>
@@ -33,10 +34,52 @@
 </div >
 <%# /記事一覧 %>
 <%# 飲食店新着５〜６件 %>
+<h1>飲食店</h1>
+<ul>
+<% @post_genre_1_2.each do |post| %>
+
+<%= link_to post_path(post.id) do %>
+<li>
+<%= post.title %>
+<%= image_tag post.image, class: "post-img" %>
+</li>
+<% end %>
+<% end %>
+</ul>
+<%= link_to "もっと見る", "/posts/genre_1/2"%>
+
+
 <%# /飲食店新着５〜６件 %>
 <%# 手料理新着５〜６件 %>
+<h1>手料理</h1>
+<ul>
+<% @post_genre_1_3.each do |post| %>
+<%= link_to post_path(post.id) do %>
+<li>
+<%= post.title %>
+<%= image_tag post.image, class: "post-img" %>
+</li>
+<% end %>
+<% end %>
+<%= link_to "もっと見る", "/posts/genre_1/3"%>
+</ul>
+
 <%# /手料理新着５〜６件 %>
 <%# コンビニ・スーパー 5~6件 %>
+<h1>コンビニ・スーパー</h1>
+<ul>
+<% @post_genre_1_4.each do |post| %>
+<%= link_to post_path(post.id) do %>
+<li>
+<%= post.title %>
+<%= image_tag post.image, class: "post-img" %>
+</li>
+<% end %>
+<% end %>
+<%if @post_genre_1_4.ids.present? %>
+<%= link_to "もっと見る", "/posts/genre_1/4"%>
+<% end %>
+</ul>
 <%# /コンビニ・スーパー 5~6件 %>
 <%# フォロー関係 %>
 <% if user_signed_in? %>
