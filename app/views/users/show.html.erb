@@ -2,7 +2,7 @@
 <table class="table">
         <tbody>
           <tr>
-            <th class="table__col1">名前</th>
+            <th class="table__col1"><%= @user.nickname %></th>
             <td class="table__col2"><%= @user.nickname %></td>
           </tr>
           <%# アイコン %>
@@ -28,9 +28,9 @@
 <% end %>
 
 
- <%= link_to 'フォロー一覧',following_path(@user.id) %>
-<h2>フォロワー一覧</h2>
-  <%= link_to 'フォロワー一覧',followerd_path(@user.id) %>
+ <%= link_to 'フォロー 一覧',following_path(@user.id) %>
+
+  <%= link_to 'フォロワー 一覧',followerd_path(@user.id) %>
 <%# ログインユーザー自身のページだったら表示する %>
 <%# 新規投稿ボタン %>
 

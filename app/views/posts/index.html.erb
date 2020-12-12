@@ -1,6 +1,10 @@
-<h1>ひるメシ top page</h1>
+<div class = 'main'>
+ <div class = 'title-contents'>
+ <h1>ひるメシ top page</h1>
+ </div>
  <%#  ヘッダー %>
- <ul class='lists-right'>
+ <div class = 'nav' >
+ <ul style="list-style: none;" class='lists-right'>
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <% if user_signed_in? %>
       <li> <%= link_to '新規投稿', new_post_path %> </li>
@@ -12,31 +16,32 @@
       <%# //deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <% end %>
       </ul>
+      </div>
  <%# /ヘッダー %>
-<%# アプリケーション概要 %>
-<%# /アプリケーション概要 %>
+ <%# アプリケーション概要 %>
+ <%# /アプリケーション概要 %>
  <%# ジャンル一覧 %>
  <%# /ジャンル一覧 %>
-<%# 記事一覧 %>
-<div class='post_contents'>
-<h1>新着記事一覧</h1>
-<ul>
-<% @posts.each do |post| %>
-<%= link_to post_path(post.id) do %>
-<li>
-<%= post.title %>
-<%= image_tag post.image, class: "post-img" %>
-</li>
-<% end %>
-</ul>
-<% end %>
-<%= paginate @posts %>
-</div >
-<%# /記事一覧 %>
-<%# 飲食店新着５〜６件 %>
-<h1>飲食店</h1>
-<ul>
-<% @post_genre_1_2.each do |post| %>
+ <%# 記事一覧 %>
+ <div class='post_contents'>
+ <h1>新着記事一覧</h1>
+ <ul>
+ <% @posts.each do |post| %>
+ <%= link_to post_path(post.id) do %>
+ <li>
+ <%= post.title %>
+ <%= image_tag post.image, class: "post-img" %>
+ </li>
+ <% end %>
+ </ul>
+ <% end %>
+ <%= paginate @posts %>
+ </div>
+ <%# /記事一覧 %>
+ <%# 飲食店新着５〜６件 %>
+ <h1>飲食店</h1>
+ <ul>
+ <% @post_genre_1_2.each do |post| %>
 
 <%= link_to post_path(post.id) do %>
 <li>
@@ -96,5 +101,6 @@
   <% end %>
 <% end %>
 <%# /フォロー関係 %>
+</div>
 <%# footer %>
 <%# /footer %>
