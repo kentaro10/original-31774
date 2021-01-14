@@ -1,0 +1,49 @@
+.post-img {
+  width: 260px;
+  height: 280px;
+}
+
+.head-container{
+  background-image: image-url('salad.jpg');
+  background-size: 100% auto;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+.list-inline{
+  display: flex;
+  justify-content: space-between;
+}
+.post-title {
+  width: 33vh;
+  height: 33vh;
+}
+
+.post-list{
+ display: flex;
+ justify-content: space-between;
+  
+}
+.post_contents{
+  height: 500px;
+  width: 100vh;
+}
+
+.post-name{
+  color: black;
+  width: 25vh;
+}
+
+ul {
+  list-style: none;
+}
+li{
+  background: snow;
+  
+}
+.main{
+  background-color: bisque;
+}
+.container{
+  background-color: white;
+}

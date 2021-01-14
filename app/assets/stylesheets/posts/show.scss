@@ -1,0 +1,23 @@
+.detail-table{
+  width: 700px;
+  border-collapse: collapse;
+  border: solid 2px orange;
+}
+.table th, table td{
+  border: solid 1px orange;
+}
+.contens{
+  display: flex;
+}
+.side-ber{
+  width: 300px;
+  height: 100vh;
+}
+.explan{
+  width: 700px;
+  height: 100vh;
+}
+.image{
+  width: 500px;
+  height: 500px;
+}

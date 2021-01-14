@@ -19,7 +19,7 @@
 <p><%# "id: #{@user.id}" %></p>
 <p><%= "フォロー数: #{@user.follower.count}" %></p>
 <p><%= "フォロワー数: #{@user.followed.count}" %></p>
-<% unless @user == current_user %>
+<% if user_signed_in? && current_user.id != @user.id %>
   <% if current_user.following?(@user) %>
     <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
   <% else %>
@@ -41,19 +41,21 @@
 <%# /フォロワーの新着記事 %>
 <%# /ログインユーザー自身のページだったら表示する %>
 <%# 新着順自身の記事 %>
-<h2 class="page-heading">
+<div class="my-new-posts">
+ <h2 class="page-heading">
         <%= "#{@user.nickname}さんの投稿記事"%>
       </h2>
-<ul>
-<% @posts.each do |post| %>
-<%= link_to post_path(post.id) do %>
-<li>
-<%= post.title %>
-<%= image_tag post.image, class: "post-img" %>
-</li>
-<% end %>
-</ul>
-<% end %>
+ <ul>
+  <% @posts.each do |post| %>
+   <%= link_to post_path(post.id) do %>
+    <li>
+     <%= post.title %>
+     <%= image_tag post.image, class: "post-img" %>
+    </li>
+   <% end %>
+  <% end %>
+ </ul>
+</div>
 
 <%# /新着順自身の記事 %>
 <%# カレンダー %>
