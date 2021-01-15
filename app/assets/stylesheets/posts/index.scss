@@ -1,3 +1,9 @@
+.kye-comment{
+  position: relative;
+  top: 200px;
+  font-size: 16px;
+  color: white;
+}
 .post-img {
   width: 260px;
   height: 280px;
@@ -9,6 +15,7 @@
   height: 500px;
   display: flex;
   justify-content: space-between;
+ 
 }
 .list-inline{
   display: flex;
@@ -42,6 +49,9 @@ li{
   
 }
 .main{
+  background-color: bisque;
+}
+.main-2{
   background-color: bisque;
 }
 .container{

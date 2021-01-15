@@ -1,0 +1,17 @@
+<header class="second-header">
+ <h1 class= "title-name">ひるめし</h1>
+ <nav class="navigation">
+  <ul class="main-nav">
+      <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
+      <% if user_signed_in? %>
+      <li class="menu-icon"> <%= link_to '新規投稿', new_post_path %> </li>
+      <li class="menu-icon"><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></li>
+      <li class="menu-icon"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+      <% else %>
+      <li class="menu-icon"><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+      <li class="menu-icon"><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <%# //deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
+      <% end %>
+     </ul>
+ </nav>
+</header>

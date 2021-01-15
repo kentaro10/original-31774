@@ -1,9 +1,11 @@
+<%= render "shared/header"%>
 <div class="main">
+
 <div class="container">
  <div class="genre_name">
   <%= "#{@post.genre_1.name}" %>
  </div>
- <ul class="row w-100">
+ <ul class="row w-100 pt-50">
   <% @posts.each do |post| %>
    <%= link_to post_path(post.id) do %>
     <li class="col-md-4">
