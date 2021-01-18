@@ -1,7 +1,10 @@
-<h2>フォロワー</h2>
+<%= render "shared/header"%>
+<div class="main">
+  <h2>フォロワー</h2>
 <% @user.follower_user.where.not(id: @user.id).each do |user| %>
     <p>
       <%= link_to "#{user.nickname}", user_path(user) %>
       <%= link_to "見にいく", user_path(user) %>
     </p>
   <% end %>
+  </div>

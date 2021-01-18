@@ -3,8 +3,11 @@ class PostsController < ApplicationController
   before_action :move_to_index, only: :edit
   def index
     @post = Post.includes(:user).order("created_at DESC") 
-    @posts = Post.all.page(params[:page]).per(2).includes(:user).order("created_at DESC") 
+    @posts = Post.all.page(params[:page]).per(8).includes(:user).order("created_at DESC") 
     @users = User.all
+    @post_genre_1_2 = Post.where(genre_1_id: 2).limit(4).order("id": "desc")
+    @post_genre_1_3 = Post.where(genre_1_id: 3).limit(4).order("id": "desc")
+    @post_genre_1_4 = Post.where(genre_1_id: 4).limit(4).order("id": "desc")
   end
   
   def new
@@ -23,6 +26,7 @@ class PostsController < ApplicationController
   def show
    
   end
+  
   def edit
   end
   def update
@@ -42,6 +46,11 @@ class PostsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def genre_1
+    @post = Post.find_by(genre_1_id: params[:id])
+    @posts = Post.where(genre_1_id: params[:id]).order('created_at DESC')
   end
 
 

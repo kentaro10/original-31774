@@ -1,0 +1,37 @@
+.second-header{
+  position: fixed;
+  width: 100vw;
+  height: 50px;
+  background-color: rgb(244, 248, 248);
+  filter: alpha(opacity=50);
+  -moz-opacity:0.5;
+  opacity:0.5;
+  z-index: 99;
+  display: flex;
+}
+.heading{
+  width: 50%;
+  height: 50px;
+  text-align: left;
+}
+.title-name{
+  height: 50px;
+  width: 20%;
+  white-space: nowrap;
+}
+.navber{
+  width: 50%;
+  height: 50px;
+}
+.nav-lists{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  height: 50px;
+  width: 80%;
+  
+}
+.head-title{
+  color: black;
+}

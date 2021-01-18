@@ -1,60 +1,60 @@
+<%= render "shared/header"%>
+<div class="my-page">
 <%# ユーザープロフィール %>
-<table class="table">
-        <tbody>
-          <tr>
-            <th class="table__col1">名前</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-          <%# アイコン %>
-          <%# /アイコン %>
-          <%# フォロー関係 %>
-          <%# /フォロー関係 %>
-          <tr>
-            <th class="table__col1">プロフィール</th>
-            <td class="table__col2"></td>
-          </tr>
-        </tbody>
-      </table>
-<%# /ユーザープロフィール %>
-<p><%# "id: #{@user.id}" %></p>
-<p><%= "フォロー数: #{@user.follower.count}" %></p>
-<p><%= "フォロワー数: #{@user.followed.count}" %></p>
-<% unless @user == current_user %>
+ <div class="my-data">
+  <div class="my-name">
+   <%= @user.nickname %>
+  </div>
+   <ul class="follow-bar">
+    <li class="follow-menu">
+    <%= link_to "#{@user.follower.count} フォロー中", following_path(@user.id) %>
+    </li>
+    <li class="follow-menu">
+    <%= link_to "#{@user.followed.count} フォロワー", followerd_path(@user.id) %>
+    </li>
+     <% if user_signed_in? && current_user.id != @user.id %>
   <% if current_user.following?(@user) %>
-    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+    <li class="follow-menu"><%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %></li>
   <% else %>
-    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+    <li class="follow-menu"><%= link_to 'フォローする', follow_path(@user.id), method: :POST %></li>
   <% end %>
 <% end %>
-
-
- <%= link_to 'フォロー一覧',following_path(@user.id) %>
-<h2>フォロワー一覧</h2>
-  <%= link_to 'フォロワー一覧',followerd_path(@user.id) %>
+   </ul>
+   <div class="my-profile">
+   <%= @user.text %>
+   </div>
+  
+ </div>
+<%# /ユーザープロフィール %>
 <%# ログインユーザー自身のページだったら表示する %>
 <%# 新規投稿ボタン %>
 
 <%# /新規投稿ボタン %>
 <%# フォローしてる人の新着記事 %>
-
-  
 <%# /フォロワーの新着記事 %>
 <%# /ログインユーザー自身のページだったら表示する %>
 <%# 新着順自身の記事 %>
-<h2 class="page-heading">
+<div class="my-new-posts">
+ <h2 class="page-heading">
         <%= "#{@user.nickname}さんの投稿記事"%>
       </h2>
-<ul>
-<% @posts.each do |post| %>
-<%= link_to post_path(post.id) do %>
-<li>
-<%= post.title %>
-<%= image_tag post.image, class: "post-img" %>
-</li>
-<% end %>
-</ul>
-<% end %>
+ <ul class="my-posts">
+  <% @posts.each do |post| %>
+   <%= link_to post_path(post.id) do %>
+    <li class="my-post">
+     <div class="img-box">
+     <%= image_tag post.image, class: "img-box" %>
+     </div>
+     <div class="title-name">
+     <%= post.title %>
+     </div>
+    </li>
+   <% end %>
+  <% end %>
+ </ul>
+</div>
 
 <%# /新着順自身の記事 %>
 <%# カレンダー %>
 <%# /カレンダー %>
+</div>

@@ -1,0 +1,69 @@
+.h1{
+  white-space: nowrap;
+}
+.kye-comment{
+  position: relative;
+  top: 200px;
+  font-size: 30px;
+  color: white;
+}
+.post-img {
+  width: 260px;
+  height: 280px;
+}
+
+.head-container{
+  background-image: image-url('salad.jpg');
+  background-size: 100% auto;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+.list-inline{
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+}
+.list-menu{
+  background-color: transparent;
+  white-space: nowrap;
+}
+.post-title {
+  width: 33vh;
+  height: 33vh;
+}
+
+.post-list{
+ display: flex;
+ justify-content: space-between;
+  
+}
+.post_contents{
+  height: 500px;
+  width: 100vh;
+}
+
+.post-name{
+  color: black;
+  width: 25vh;
+}
+
+ul {
+  list-style: none;
+}
+li{
+  background: snow;
+  
+}
+.main{
+  background-color: bisque;
+
+}
+.main-2{
+  background-color: bisque;
+  
+}
+.container{
+  background-color: white;
+}

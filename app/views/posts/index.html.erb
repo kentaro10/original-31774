@@ -1,57 +1,132 @@
-<h1>Posts#index トップページ</h1>
+<div class = 'main-2'>
  <%#  ヘッダー %>
- <ul class='lists-right'>
+  <header class = 'head-container' >
+   <div class = 'title-contents'>
+    <h1>ひるメシ</h1>
+   </div>
+   <div class = 'catch-contents'>
+    <div class= "kye-comment">
+    お昼何食べた？今日のお昼ご飯が見つかるかも！！
+    </div>
+   </div>
+    <nav>
+     <ul style="list-style: none;" class="list-inline">
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <% if user_signed_in? %>
-      <li> <%= link_to '新規投稿', new_post_path %> </li>
-      <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+      <li class="list-menu"> <%= link_to '新規投稿', new_post_path %> </li>
+      <li class="list-menu"><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></li>
+      <li class="list-menu"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <div>
+      <li class="list-menu"><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+      </div>
+      <div>
+      <li class="list-menu"><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      </div>
       <%# //deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <% end %>
-      </ul>
+     </ul>
+     </nav>
+   </header>
  <%# /ヘッダー %>
-
+ <%# アプリケーション概要 %>
+ <%# /アプリケーション概要 %>
+ <%# 検索フォーム%>
+ <%# /検索フォーム%>
  <%# ジャンル一覧 %>
  <%# /ジャンル一覧 %>
-<%# 記事一覧 %>
-<div class='post_contents'>
-<h1>新着記事一覧</h1>
-<ul>
-<% @posts.each do |post| %>
+ <div class="box">
+ <%# 記事一覧 %>
+  <div class="container">
+   <p class = 'new-post-all'>
+   新着記事一覧
+   </p>
+   <ul class="row">
+    <% @posts.each do |post| %>
+    <%= link_to post_path(post.id) do %>
+     <li class="border rounded m-3 text-center">
+     <%= image_tag post.image, class: "post-img" %>
+     <p class='post-name'>
+     <%= post.title %>
+     </p>
+     </li>
+       <% end %>
+      <% end %>
+     </ul>
+    <%= paginate @posts %>
+   </div>
+ <%# /記事一覧 %>
+
+ <%# 飲食店新着５〜６件 %>
+ <div class="container">
+ <h1>飲食店</h1>
+ <ul class='row'>
+ <% @post_genre_1_2.each do |post| %>
 <%= link_to post_path(post.id) do %>
-<li>
-<%= post.title %>
+<li class="border border-primary rounded m-3 text-center">
 <%= image_tag post.image, class: "post-img" %>
+<p class='post-name'>
+    <%= post.title %>
+    </p>
 </li>
 <% end %>
-</ul>
 <% end %>
-<%= paginate @posts %>
-</div >
-<%# /記事一覧 %>
-<%# 飲食店新着５〜６件 %>
+</ul>
+<div>
+<%= link_to "もっと見る", "/posts/genre_1/2"%>
+</div>
+</div>
+
+
 <%# /飲食店新着５〜６件 %>
 <%# 手料理新着５〜６件 %>
-<%# /手料理新着５〜６件 %>
-<%# コンビニ・スーパー 5~6件 %>
-<%# /コンビニ・スーパー 5~6件 %>
-<%# フォロー関係 %>
-<% if user_signed_in? %>
-  <h1>ユーザー一覧画面</h1>
-  <% @users.each do |user| %>
-    <p>
-      <%= "id: #{user.id}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
+<div class="container">
+<h1>手料理</h1>
+<ul class="row">
+<% @post_genre_1_3.each do |post| %>
+<%= link_to post_path(post.id) do %>
+<li class="border border-primary rounded m-3">
+<%= image_tag post.image, class: "post-img" %>
+<p class='post-name'>
+    <%= post.title %>
     </p>
-  <% end %>
+</li>
 <% end %>
+<% end %>
+</ul>
+<div>
+<%= link_to "もっと見る", "/posts/genre_1/3"%>
+</div>
+</div>
+
+<%# /手料理新着５〜６件 %>
+<%# コンビニ・スーパー テイクアウト 5~6件 %>
+<div class="container">
+<h1>テイクアウト・その他</h1>
+<ul class="row">
+<% @post_genre_1_4.each do |post| %>
+<%= link_to post_path(post.id) do %>
+<li class="border border-primary rounded m-3">
+<%= image_tag post.image, class: "post-img" %>
+<p class='post-name'>
+    <%= post.title %>
+    </p>
+</li>
+<% end %>
+<% end %>
+<%if @post_genre_1_4.ids.present? %>
+<% end %>
+</ul>
+<div>
+<%= link_to "もっと見る", "/posts/genre_1/4"%>
+</div>
+</div>
+<%# /コンビニ・スーパー テイクアウト 5~6件 %>
+
+</div>
+<%# フォロー関係 %>
+
 <%# /フォロー関係 %>
+</div>
 <%# footer %>
 <%# /footer %>
