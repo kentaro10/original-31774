@@ -9,15 +9,21 @@
   z-index: 99;
   display: flex;
 }
+.heading{
+  width: 50%;
+  height: 50px;
+  text-align: left;
+}
 .title-name{
   height: 50px;
   width: 20%;
+  white-space: nowrap;
 }
-.navigation{
-  width: 80%;
+.navber{
+  width: 50%;
   height: 50px;
 }
-.main-nav{
+.nav-lists{
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -25,4 +31,7 @@
   height: 50px;
   width: 80%;
   
+}
+.head-title{
+  color: black;
 }

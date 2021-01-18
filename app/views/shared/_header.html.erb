@@ -1,7 +1,9 @@
 <header class="second-header">
- <h1 class= "title-name">ひるめし</h1>
- <nav class="navigation">
-  <ul class="main-nav">
+ <div class="heading">
+  <h1 class= "title-name"><%= link_to 'ひるめし', root_path, class:"head-title" %></h1>
+ </div>
+ <div class="navber">
+  <ul class="nav-lists">
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <% if user_signed_in? %>
       <li class="menu-icon"> <%= link_to '新規投稿', new_post_path %> </li>
@@ -13,5 +15,5 @@
       <%# //deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <% end %>
      </ul>
- </nav>
+ </div>
 </header>

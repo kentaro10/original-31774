@@ -1,7 +1,10 @@
+.h1{
+  white-space: nowrap;
+}
 .kye-comment{
   position: relative;
   top: 200px;
-  font-size: 16px;
+  font-size: 30px;
   color: white;
 }
 .post-img {
@@ -20,6 +23,11 @@
 .list-inline{
   display: flex;
   justify-content: space-between;
+  background-color: transparent;
+}
+.list-menu{
+  background-color: transparent;
+  white-space: nowrap;
 }
 .post-title {
   width: 33vh;
@@ -50,9 +58,11 @@ li{
 }
 .main{
   background-color: bisque;
+
 }
 .main-2{
   background-color: bisque;
+  
 }
 .container{
   background-color: white;

@@ -1,4 +1,5 @@
-
+<%= render "shared/header"%>
+<div class="main">
 <h2>フォローしてる人</h2>
   <% @user.following_user.where.not(id: @user.id).each do |user| %>
     <p>
@@ -6,3 +7,4 @@
       <%= link_to "見にいく", user_path(user) %>
     </p>
   <% end %>
+  </div>
