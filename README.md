@@ -9,7 +9,7 @@
  Ruby on Railsで制作しました。  
 
  ## URL
- original-31774.herokuapp.com
+ https://original-31774.herokuapp.com/
 
  ## テスト用アカウント
  ・メールアドレス： taro@taro  
